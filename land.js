@@ -1,10 +1,19 @@
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
+const toggleIcon = document.getElementById('toggle-icon');
+
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('night');
     document.body.classList.toggle('day');
     themeToggle.classList.toggle('night');
     themeToggle.classList.toggle('day');
+    
+    // Change icon based on theme
+    if (document.body.classList.contains('night')) {
+        toggleIcon.textContent = '🌙';
+    } else {
+        toggleIcon.textContent = '🌞';
+    }
 });
 
 // Countdown Timer (if needed)

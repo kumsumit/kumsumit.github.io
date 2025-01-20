@@ -52,6 +52,10 @@ nav ul li a {
     padding: 2rem 1rem;
 }
 
+#contact {
+    margin-bottom: 100px; /* Ensure there's space above the footer */
+}
+
 footer {
     background-color: #333;
     color: white;
@@ -62,17 +66,24 @@ footer {
     bottom: 0;
 }
 
-/* #theme-toggle {
+#theme-toggle {
+    background-color: #FFD700;
     border: none;
     color: black;
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
 }
 
 #theme-toggle:hover {
     background-color: #FFC107;
-} */
+}
+
+#toggle-icon {
+    margin-right: 8px;
+}
 
 body.day {
     background-color: #fff;
