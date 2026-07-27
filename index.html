@@ -1846,6 +1846,359 @@
                 font-size: 2.45rem;
             }
         }
+        /* ── REFINED DESIGN SYSTEM ── */
+        body {
+            background: var(--bg);
+        }
+
+        nav {
+            border-bottom-color: rgba(207, 169, 253, 0.1);
+        }
+
+        .nav-shell {
+            width: min(1240px, calc(100% - 3rem));
+            min-height: 72px;
+        }
+
+        .nav-links {
+            gap: 1.5rem;
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+        }
+
+        .nav-cta {
+            padding: 0.62rem 1.1rem;
+            border-radius: 10px;
+            letter-spacing: 0.02em;
+        }
+
+        #hero {
+            min-height: min(820px, 100svh);
+            padding: 8.5rem 1.5rem 3.5rem;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% 34%, rgba(192, 148, 253, 0.1), transparent 72%);
+        }
+
+        #hero-canvas {
+            opacity: 0.54;
+        }
+
+        .hero-logo {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 20px rgba(192, 148, 253, 0.26));
+        }
+
+        .hero-eyebrow {
+            padding: 0.38rem 0.7rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(207, 169, 253, 0.06);
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            display: none;
+        }
+
+        .hero-title {
+            max-width: 850px;
+            font-size: clamp(4rem, 7.4vw, 6.6rem);
+            line-height: 0.98;
+            letter-spacing: -0.035em;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-sub {
+            max-width: 600px;
+            margin-bottom: 2.2rem;
+            font-size: 1.03rem;
+            line-height: 1.75;
+        }
+
+        .hero-actions .btn-primary,
+        .hero-actions .btn-ghost {
+            border-radius: 10px;
+            padding: 0.78rem 1.25rem;
+            font-size: 0.84rem;
+        }
+
+        .hero-product-summary {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 0.55rem;
+            margin-top: 3rem;
+            color: var(--muted);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero-product-summary span:first-child {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .scroll-indicator {
+            margin-top: 2.2rem;
+            opacity: 0.68;
+        }
+
+        section {
+            padding: 6.5rem 2rem;
+        }
+
+        .section-label,
+        .ps-label {
+            font-size: 0.66rem;
+            letter-spacing: 0.17em;
+        }
+
+        h2.section-title {
+            max-width: 760px;
+            font-size: clamp(2.7rem, 5vw, 4.25rem);
+            letter-spacing: -0.03em;
+        }
+
+        #mission {
+            background: linear-gradient(180deg, var(--bg2), var(--bg));
+        }
+
+        .mission-grid {
+            max-width: 1120px;
+            gap: 4rem;
+        }
+
+        .mission-quote {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.28;
+        }
+
+        .mission-stats {
+            gap: 0.75rem;
+        }
+
+        .stat-box {
+            min-height: 132px;
+            padding: 1.3rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .stat-num {
+            font-size: 2.2rem;
+        }
+
+        #products {
+            max-width: 1240px;
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+
+        .products-header {
+            max-width: 720px;
+            margin: 0 0 3.5rem;
+            text-align: left;
+        }
+
+        .products-header .section-label {
+            justify-content: flex-start;
+        }
+
+        .products-header .section-desc {
+            margin: 0;
+        }
+
+        .products-grid {
+            gap: 1rem;
+        }
+
+        .product-card {
+            min-height: 280px;
+            padding: 1.75rem;
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.018));
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.25rem;
+            border-radius: 12px;
+        }
+
+        .card-name {
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+        }
+
+        .card-desc {
+            font-size: 0.91rem;
+            line-height: 1.7;
+        }
+
+        .feat-tag {
+            padding: 0.22rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.67rem;
+        }
+
+        .product-section {
+            border-top-color: rgba(207, 169, 253, 0.1);
+        }
+
+        .product-section .inner {
+            max-width: 1120px;
+            gap: clamp(3rem, 7vw, 6rem);
+        }
+
+        .ps-name {
+            font-size: clamp(3.4rem, 5vw, 4.8rem);
+            letter-spacing: -0.04em;
+        }
+
+        .ps-tagline {
+            max-width: 440px;
+            margin-bottom: 1.4rem;
+        }
+
+        .ps-body {
+            max-width: 520px;
+            margin-bottom: 1.6rem;
+            line-height: 1.75;
+        }
+
+        .features-list {
+            gap: 0.65rem;
+        }
+
+        .features-list li {
+            font-size: 0.91rem;
+            line-height: 1.6;
+        }
+
+        .ps-visual {
+            border-radius: 16px;
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.14);
+        }
+
+        #strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .strip-item {
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+        }
+
+        .strip-num {
+            color: var(--accent);
+            font-size: 2.4rem;
+        }
+
+        .strip-lbl {
+            color: var(--muted);
+        }
+
+        #cta {
+            margin-top: 6.5rem;
+            padding: 7rem 2rem;
+            background: linear-gradient(135deg, rgba(192, 148, 253, 0.12), rgba(134, 91, 223, 0.04));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #cta h2 {
+            font-size: clamp(3rem, 6vw, 5.4rem);
+            letter-spacing: -0.04em;
+        }
+
+        footer {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            border-top: 0;
+        }
+
+        .footer-links {
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 1180px) {
+            .nav-shell {
+                width: min(calc(100% - 3rem), 960px);
+            }
+
+            #strip {
+                margin-inline: 2rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-shell {
+                width: calc(100% - 2rem);
+            }
+
+            #hero {
+                padding-top: 7rem;
+            }
+
+            .hero-product-summary {
+                margin-top: 2.25rem;
+                font-size: 0.64rem;
+            }
+
+            .products-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .products-grid {
+                gap: 0.8rem;
+            }
+
+            .product-card {
+                min-height: auto;
+            }
+
+            #strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin: 0 1rem;
+                padding: 1px;
+                border-radius: 12px;
+            }
+
+            #cta {
+                margin-top: 4rem;
+                padding: 5rem 1.25rem;
+            }
+        }
     </style>
 </head>
 
@@ -1867,7 +2220,6 @@
                     aria-pressed="false">
                     <span class="theme-toggle-orbit" aria-hidden="true">☾</span>
                 </button>
-                <a href="#cta" class="nav-cta">Get Started</a>
             </div>
         </div>
     </nav>
@@ -1889,15 +2241,10 @@
             <a href="#products" class="btn-primary">Explore Our Products</a>
             <a href="#mission" class="btn-ghost">Our Mission</a>
         </div>
-        <div class="hero-products-row">
-            <a class="hero-pill pill-solunis" href="https://solunis.kumpali.com" target="_blank"
-                rel="noopener noreferrer">Solunis</a>
-            <span class="hero-pill pill-chumble">Chumble</span>
-            <span class="hero-pill pill-placyra">Placyra</span>
-            <span class="hero-pill pill-bledz">Bledz</span>
-            <span class="hero-pill pill-law">LawPartner</span>
-            <a class="hero-pill" href="https://loanx.kumpali.com" target="_blank" rel="noopener noreferrer">Loanx</a>
-            <a class="hero-pill" href="https://storax.kumpali.com" target="_blank" rel="noopener noreferrer">Storax</a>
+        <div class="hero-product-summary" aria-label="Kumpali product portfolio">
+            <span>Seven focused products</span>
+            <span aria-hidden="true">·</span>
+            <span>One connected ecosystem</span>
         </div>
         <div class="scroll-indicator">
             <span>Scroll</span>
@@ -2614,19 +2961,6 @@
             <div class="strip-lbl">Ecosystem</div>
         </div>
     </div>
-
-    <!-- ── CTA ── -->
-    <section id="cta">
-        <div class="section-label" style="justify-content:center">Join Kumpali</div>
-        <h2>Ready to be<br><em
-                style="font-family:'Fraunces',serif;font-style:italic;background:linear-gradient(90deg,var(--accent),var(--solunis));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">assisted?</em>
-        </h2>
-        <p>One ecosystem. Seven domains. Infinite possibilities for a better, more empowered life.</p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-            <a href="#" class="btn-primary">Get Started Free</a>
-            <a href="#products" class="btn-ghost">Explore Products</a>
-        </div>
-    </section>
 
     <!-- ── FOOTER ── -->
     <footer>
