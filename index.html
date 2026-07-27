@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kumpali — Assisting Humanity, Every Domain</title>
     <meta name="description"
-        content="Kumpali is an intelligent ecosystem for daily life, business operations, identity verification, fashion assistance, and legal guidance.">
+        content="Kumpali is an intelligent ecosystem for daily life, business operations, identity verification, fashion assistance, legal guidance, loan record management, and file intelligence.">
     <meta name="keywords"
-        content="Kumpali, Solunis, Chumble, Placyra, Bledz, LawPartner, AI assistant, business OS, calendar app, KYC, legal guidance, fashion AI">
+        content="Kumpali, Solunis, Chumble, Placyra, Bledz, LawPartner, Loanx, Storax, AI assistant, business OS, calendar app, KYC, legal guidance, fashion AI, loan record management, file manager, encrypted vault">
     <meta name="author" content="Kumpali">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#120721">
@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="Kumpali">
     <meta property="og:title" content="Kumpali — Assisting Humanity, Every Domain">
     <meta property="og:description"
-        content="One ecosystem for life, business, identity, fashion, and legal assistance. Explore Kumpali's five product pillars.">
+        content="One ecosystem for life, business, identity, fashion, legal assistance, loan record management, and file intelligence. Explore Kumpali's seven product pillars.">
     <meta property="og:url" content="https://www.kumpali.com/">
     <meta property="og:image" content="https://www.kumpali.com/kumpali_dark.png">
     <meta property="og:image:alt" content="Kumpali logo">
@@ -66,6 +66,16 @@
                     "@type": "Brand",
                     "name": "LawPartner",
                     "description": "Legal guidance platform for rights awareness, laws, and step-by-step action plans."
+                },
+                {
+                    "@type": "Brand",
+                    "name": "Loanx",
+                    "description": "Mortgage-backed loan record management for pledged assets, borrowers, repayments, receipts, documents, and optional Google Drive backups."
+                },
+                {
+                    "@type": "Brand",
+                    "name": "Storax",
+                    "description": "Local-first Android file intelligence with encrypted vaults, file browsing, advanced search, storage insights, and recovery tools."
                 }
             ]
         }
@@ -97,6 +107,10 @@
             --bledz-glow: rgba(182, 138, 254, 0.18);
             --law: #B78AFD;
             --law-glow: rgba(183, 138, 253, 0.18);
+            --loanx: #9FD09F;
+            --loanx-glow: rgba(159, 208, 159, 0.18);
+            --storax: #67E8F9;
+            --storax-glow: rgba(103, 232, 249, 0.18);
         }
 
         body.theme-glow {
@@ -182,10 +196,6 @@
             left: 0;
             right: 0;
             z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.1rem 4rem;
             background: rgba(18, 7, 33, 0.82);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
@@ -194,6 +204,14 @@
         body.theme-glow nav {
             background: rgba(247, 241, 255, 0.86);
             box-shadow: 0 14px 40px rgba(134, 91, 223, 0.08);
+        }
+
+        .nav-shell {
+            width: min(1320px, calc(100% - 4rem));
+            min-height: 78px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
         }
 
         .nav-logo {
@@ -218,7 +236,9 @@
 
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            align-items: center;
+            gap: 1.8rem;
+            margin-left: 3.25rem;
             list-style: none;
         }
 
@@ -256,6 +276,7 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            margin-left: auto;
         }
 
         .theme-toggle {
@@ -734,6 +755,16 @@
             --cg: var(--law-glow);
         }
 
+        .card-loanx {
+            --c: var(--loanx);
+            --cg: var(--loanx-glow);
+        }
+
+        .card-storax {
+            --c: var(--storax);
+            --cg: var(--storax-glow);
+        }
+
         .product-card {
             border-color: var(--border);
         }
@@ -863,6 +894,14 @@
 
         .ps-law::before {
             background: var(--law);
+        }
+
+        .ps-loanx::before {
+            background: var(--loanx);
+        }
+
+        .ps-storax::before {
+            background: var(--storax);
         }
 
         .product-section .inner {
@@ -1375,8 +1414,8 @@
         }
 
         @media (min-width: 1400px) {
-            nav {
-                padding-inline: max(4rem, calc((100vw - 1320px) / 2));
+            .nav-shell {
+                width: min(1400px, calc(100% - 8rem));
             }
 
             #hero {
@@ -1393,11 +1432,13 @@
         }
 
         @media (max-width: 1180px) {
-            nav {
+            .nav-shell {
                 display: grid;
                 grid-template-columns: auto auto;
                 row-gap: 0.9rem;
-                padding: 1rem 2rem;
+                width: min(calc(100% - 4rem), 960px);
+                min-height: auto;
+                padding: 1rem 0;
             }
 
             .nav-links {
@@ -1409,6 +1450,7 @@
 
             .nav-actions {
                 justify-content: end;
+                margin-left: 0;
             }
 
             .nav-links a {
@@ -1490,9 +1532,10 @@
                 font-size: 15px;
             }
 
-            nav {
+            .nav-shell {
                 grid-template-columns: 1fr auto;
-                padding: 0.85rem 1rem;
+                width: calc(100% - 2rem);
+                padding: 0.85rem 0;
             }
 
             .nav-logo {
@@ -1810,25 +1853,22 @@
 
     <!-- ── NAV ── -->
     <nav>
-        <a href="#" class="nav-logo">
-            <img src="kumpali_dark.png" alt="Kumpali logo" class="nav-logo-mark">
-            KUMPALI
-        </a>
-        <ul class="nav-links">
-            <li><a href="#products">Products</a></li>
-            <li><a href="https://solunis.kumpali.com" target="_blank" rel="noopener noreferrer">Solunis</a></li>
-            <!-- <li><a href="https://storax.kumpali.com" target="_blank" rel="noopener noreferrer">Storax</a></li> -->
-            <li><a href="https://chumble.app" target="_blank" rel="noopener noreferrer">Chumble</a></li>
-            <li><a href="https://placyra.com" target="_blank" rel="noopener noreferrer">Placyra</a></li>
-            <li><a href="https://bledz.kumpali.com" target="_blank" rel="noopener noreferrer">Bledz</a></li>
-            <li><a href="https://lawpartner.in" target="_blank" rel="noopener noreferrer">LawPartner</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to glow theme"
-                aria-pressed="false">
-                <span class="theme-toggle-orbit" aria-hidden="true">☾</span>
-            </button>
-            <a href="#cta" class="nav-cta">Get Started</a>
+        <div class="nav-shell">
+            <a href="#" class="nav-logo">
+                <img src="kumpali_dark.png" alt="Kumpali logo" class="nav-logo-mark">
+                KUMPALI
+            </a>
+            <ul class="nav-links">
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#products">Products</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to glow theme"
+                    aria-pressed="false">
+                    <span class="theme-toggle-orbit" aria-hidden="true">☾</span>
+                </button>
+                <a href="#cta" class="nav-cta">Get Started</a>
+            </div>
         </div>
     </nav>
 
@@ -1856,6 +1896,8 @@
             <span class="hero-pill pill-placyra">Placyra</span>
             <span class="hero-pill pill-bledz">Bledz</span>
             <span class="hero-pill pill-law">LawPartner</span>
+            <a class="hero-pill" href="https://loanx.kumpali.com" target="_blank" rel="noopener noreferrer">Loanx</a>
+            <a class="hero-pill" href="https://storax.kumpali.com" target="_blank" rel="noopener noreferrer">Storax</a>
         </div>
         <div class="scroll-indicator">
             <span>Scroll</span>
@@ -1898,7 +1940,7 @@
     <section id="products">
         <div class="products-header fade-up">
             <div class="section-label">Our Ecosystem</div>
-            <h2 class="section-title">Five Pillars of Human Assistance</h2>
+            <h2 class="section-title">Seven Pillars of Human Assistance</h2>
             <p class="section-desc">Each product is a specialist — together they form a complete ecosystem for modern
                 human life.</p>
         </div>
@@ -1924,7 +1966,7 @@
 
             <a href="https://chumble.app" class="product-card card-chumble" target="_blank" rel="noopener noreferrer">
                 <span class="card-arrow">↗</span>
-                <div class="card-icon">🏪</div>
+                <div class="card-icon"><img src="chumble.png" alt="Chumble logo" class="card-logo"></div>
                 <div class="card-tag">Business</div>
                 <div class="card-name">Chumble</div>
                 <div class="card-desc">A complete Business OS for shops of all sizes — inventory, sales, tax
@@ -1975,6 +2017,36 @@
                     <span class="feat-tag">Legal Guidance</span>
                     <span class="feat-tag">Rights Awareness</span>
                     <span class="feat-tag">Step-by-Step</span>
+                </div>
+            </a>
+
+            <a href="https://loanx.kumpali.com" class="product-card card-loanx" target="_blank" rel="noopener noreferrer">
+                <span class="card-arrow">↗</span>
+                <div class="card-icon"><img src="loanx.png" alt="Loanx logo" class="card-logo"></div>
+                <div class="card-tag">Loan Records</div>
+                <div class="card-name">Loanx</div>
+                <div class="card-desc">A clear, private ledger for mortgage-backed loans — record pledged assets,
+                    borrowers, repayments, receipts, and documents in one place.</div>
+                <div class="card-features">
+                    <span class="feat-tag">Pledged Assets</span>
+                    <span class="feat-tag">Repayments</span>
+                    <span class="feat-tag">Receipts</span>
+                    <span class="feat-tag">Google Drive Backup</span>
+                </div>
+            </a>
+
+            <a href="https://storax.kumpali.com" class="product-card card-storax" target="_blank" rel="noopener noreferrer">
+                <span class="card-arrow">↗</span>
+                <div class="card-icon"><img src="storax.png" alt="Storax logo" class="card-logo"></div>
+                <div class="card-tag">File Intelligence</div>
+                <div class="card-name">Storax</div>
+                <div class="card-desc">A polished Android file manager for browsing, protecting, organising, searching,
+                    and recovering files — all with local-first control.</div>
+                <div class="card-features">
+                    <span class="feat-tag">Encrypted Vault</span>
+                    <span class="feat-tag">File Explorer</span>
+                    <span class="feat-tag">Advanced Search</span>
+                    <span class="feat-tag">Trash Recovery</span>
                 </div>
             </a>
 
@@ -2405,10 +2477,128 @@
         </div>
     </section>
 
+    <!-- ── LOANX ── -->
+    <section id="loanx" class="product-section ps-loanx" style="background:var(--bg2)">
+        <div class="inner flip">
+            <div class="fade-up">
+                <div class="ps-label" style="color:var(--loanx)">Loan Records · Loanx</div>
+                <div class="ps-name">Loanx</div>
+                <div class="ps-tagline">"The familiar loan ledger, kept clear, searchable, and in your hands."</div>
+                <div class="ps-body">
+                    Loanx is a digital mortgage-backed loan record management app for individuals and small businesses.
+                    It keeps the details of money lent against pledged assets together with borrower information,
+                    repayments, loan history, receipts, and related documents — without acting as a lender or payment
+                    processor.
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <div class="feat-icon" style="background:var(--loanx-glow);color:var(--loanx)">📒</div>
+                        <div><strong>Loan & Pledged-Asset Records</strong> — Record the amount lent, pledged asset,
+                            borrower, and date in one clear entry</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--loanx-glow);color:var(--loanx)">👥</div>
+                        <div><strong>Borrowers & Loan History</strong> — Keep borrower details and past loan activity
+                            easy to find</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--loanx-glow);color:var(--loanx)">🧾</div>
+                        <div><strong>Repayments & Receipts</strong> — Track payments and create receipts to share or
+                            print</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--loanx-glow);color:var(--loanx)">📁</div>
+                        <div><strong>Documents & Optional Backup</strong> — Organise related documents and choose to
+                            back up or restore data using your own Google Drive</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--loanx-glow);color:var(--loanx)">🔒</div>
+                        <div><strong>Private by Design</strong> — Loanx has no account or server holding your loan
+                            records; Google Drive is used only when you choose backup or restore</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ps-visual fade-up" style="border-color:rgba(159,208,159,0.34);">
+                <div class="ps-visual-inner">
+                    <div style="width:100%;max-width:340px;background:rgba(159,208,159,0.08);border:1px solid rgba(159,208,159,0.28);border-radius:16px;padding:1.2rem;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;font-size:0.74rem;color:var(--muted);">
+                            <span style="color:var(--loanx);font-weight:700">LOANX · TODAY'S ENTRY</span><span>24 Jul</span>
+                        </div>
+                        <div style="padding:0.85rem;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:0.82rem;line-height:1.9;color:var(--muted);">
+                            <div style="display:flex;justify-content:space-between"><span>Borrower</span><strong style="color:var(--text)">Ramesh Kumar</strong></div>
+                            <div style="display:flex;justify-content:space-between"><span>Pledged asset</span><strong style="color:var(--text)">Gold jewellery</strong></div>
+                            <div style="display:flex;justify-content:space-between"><span>Amount lent</span><strong style="color:var(--loanx)">₹50,000</strong></div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.9rem;font-size:0.75rem;color:var(--muted);"><span>Receipt ready</span><span style="color:var(--loanx);font-weight:700">✓ RECORDED</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── STORAX ── -->
+    <section id="storax" class="product-section ps-storax">
+        <div class="inner">
+            <div class="fade-up">
+                <div class="ps-label" style="color:var(--storax)">File Intelligence · Storax</div>
+                <div class="ps-name">Storax</div>
+                <div class="ps-tagline">"Everything you expect from a serious file manager, without the clutter."</div>
+                <div class="ps-body">
+                    Storax brings secure vaults, batch operations, smart media browsing, storage insights, and advanced
+                    file tools into one fast Android experience. It is built around local-first file control, so your
+                    files remain under your control while the everyday work of finding and organising them gets simpler.
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <div class="feat-icon" style="background:var(--storax-glow);color:var(--storax)">🔐</div>
+                        <div><strong>Secure Encrypted Vault</strong> — Password-protected storage for sensitive files
+                            with private file operations and auto-lock behaviour</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--storax-glow);color:var(--storax)">🗂️</div>
+                        <div><strong>Complete File Explorer</strong> — Browse internal storage, USB drives, SD cards,
+                            and external devices through one clear interface</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--storax-glow);color:var(--storax)">🔎</div>
+                        <div><strong>Advanced Search</strong> — Find files faster with real-time search, filters,
+                            sorting controls, and hidden-file discovery</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--storax-glow);color:var(--storax)">⚡</div>
+                        <div><strong>Powerful Daily Tools</strong> — Use batch operations, smart media browsing, and
+                            storage insights without losing a clean, understandable workflow</div>
+                    </li>
+                    <li>
+                        <div class="feat-icon" style="background:var(--storax-glow);color:var(--storax)">♻️</div>
+                        <div><strong>Recoverable Trash</strong> — Restore files from a recoverable trash bin or clean
+                            them up when you are ready</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ps-visual fade-up" style="border-color:rgba(103,232,249,0.34);">
+                <div class="ps-visual-inner">
+                    <div style="width:100%;max-width:340px;background:rgba(103,232,249,0.08);border:1px solid rgba(103,232,249,0.28);border-radius:16px;padding:1.2rem;">
+                        <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:1rem;">
+                            <img src="storax.png" alt="" style="width:30px;height:30px;border-radius:7px;object-fit:contain;">
+                            <div><strong style="display:block;color:var(--text);font-size:0.9rem;">Storax</strong><span style="font-size:0.7rem;color:var(--storax);">LOCAL FILE CONTROL</span></div>
+                        </div>
+                        <div style="padding:0.85rem;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:0.82rem;line-height:1.9;color:var(--muted);">
+                            <div style="display:flex;justify-content:space-between"><span>Secure Vault</span><strong style="color:var(--storax)">Protected</strong></div>
+                            <div style="display:flex;justify-content:space-between"><span>Storage used</span><strong style="color:var(--text)">42.8 GB</strong></div>
+                            <div style="display:flex;justify-content:space-between"><span>Recent files</span><strong style="color:var(--text)">1,284</strong></div>
+                        </div>
+                        <div style="margin-top:0.9rem;font-size:0.75rem;color:var(--muted);">Search, organise, and recover — on your device.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── STRIP ── -->
     <div id="strip">
         <div class="strip-item">
-            <div class="strip-num">5</div>
+            <div class="strip-num">7</div>
             <div class="strip-lbl">Products</div>
         </div>
         <div class="strip-item">
@@ -2431,7 +2621,7 @@
         <h2>Ready to be<br><em
                 style="font-family:'Fraunces',serif;font-style:italic;background:linear-gradient(90deg,var(--accent),var(--solunis));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">assisted?</em>
         </h2>
-        <p>One ecosystem. Five domains. Infinite possibilities for a better, more empowered life.</p>
+        <p>One ecosystem. Seven domains. Infinite possibilities for a better, more empowered life.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
             <a href="#" class="btn-primary">Get Started Free</a>
             <a href="#products" class="btn-ghost">Explore Products</a>
@@ -2443,12 +2633,14 @@
         <a href="#" class="footer-logo">KUMPALI</a>
         <ul class="footer-links">
             <li><a href="https://solunis.www.kumpali.com" target="_blank" rel="noopener noreferrer">Solunis</a></li>
-            <li><a href="#chumble">Chumble</a></li>
+            <li><a href="https://chumble.app" target="_blank" rel="noopener noreferrer">Chumble</a></li>
             <li><a href="#placyra">Placyra</a></li>
             <li><a href="#bledz">Bledz</a></li>
             <li><a href="#lawpartner">LawPartner</a></li>
+            <li><a href="#loanx">Loanx</a></li>
+            <li><a href="https://storax.kumpali.com" target="_blank" rel="noopener noreferrer">Storax</a></li>
         </ul>
-        <div class="footer-copy">© 2025 Kumpali. Assisting humanity, every domain.</div>
+        <div class="footer-copy">© 2026 Kumpali Private Limited. Assisting humanity, every domain.</div>
     </footer>
 
     <script>
