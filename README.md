@@ -21,3 +21,7 @@ Verified contact details, Stromule/Pangeabuy logos, and privacy/terms documents 
 ## Accessibility and motion
 
 Navigation supports keyboard access, visible focus, Escape to close the mobile menu, and focus movement to the selected section. Reveal animations progressively enhance visible HTML and respect reduced-motion preferences.
+
+## Company brochure
+
+`brochure.pdf` is linked from the hero and footer through the brochure panel in About. The panel provides a browser PDF link in a new tab and a separate download link with a descriptive filename. Include the PDF when deploying. When replacing the PDF, update the displayed page count and file size in `index.html`.
