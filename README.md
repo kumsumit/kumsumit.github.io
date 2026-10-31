@@ -16,7 +16,7 @@ Product discovery buttons and footer links point to the supplied official destin
 
 The contact form validates a draft and lets visitors copy it. It does not submit, transmit, or persist personal information. The page states this beside the form and after copying. To connect a verified contact service, replace the draft-only submit handler at the end of `script.js` with the service's documented integration. Show success only after the service confirms acceptance, handle errors, and update the form explanation and privacy information accordingly. Do not add service secrets to client-side code.
 
-The company’s registered office address supplied for the website appears in the contact section and footer: Unit 603–604, 6th Floor, Tower B, Bhutani Alphathum, Noida, Gautam Buddha Nagar, Uttar Pradesh – 201301, India. Other contact details, Stromule/Pangeabuy logos, and privacy/terms documents have not been provided.
+The company’s registered office address supplied for the website appears in the footer: Unit 603–604, 6th Floor, Tower B, Bhutani Alphathum, Noida, Gautam Buddha Nagar, Uttar Pradesh – 201301, India. Other contact details, Stromule/Pangeabuy logos, and privacy/terms documents have not been provided.
 
 ## Accessibility and motion
 
