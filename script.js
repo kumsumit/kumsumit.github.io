@@ -62,3 +62,13 @@ document.querySelector('#contact-form').addEventListener('submit', async event =
     status.textContent = 'Your draft is ready below. Select and copy it; your enquiry has not been sent.';
   }
 });
+
+// Local files cannot provide the HTTP Referer required by YouTube embeds.
+// Keep the direct recording links usable in local-file previews.
+if (location.protocol === 'file:') {
+  document.querySelectorAll('.perspective-video').forEach(container => {
+    container.querySelector('iframe')?.remove();
+    const fallback = container.querySelector('.perspective-video-fallback');
+    if (fallback) fallback.hidden = false;
+  });
+}

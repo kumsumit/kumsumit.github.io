@@ -11,7 +11,13 @@
     "dateLabel": "15 January 2022",
     "source": "https://www.pmindia.gov.in/en/news_updates/pms-address-at-interacts-with-startups-from-various-sectors/",
     "publisher": "Prime Minister’s Office, India",
-    "sourceType": "Official speech transcript"
+    "sourceType": "Official speech transcript",
+    "videoTimestamp": "28:56–31:10",
+    "videoId": "TDfNlOliRzU",
+    "videoStart": "1736",
+    "videoEnd": "1870",
+    "additionalSource": "https://www.pmindia.gov.in/en/news_updates/pm-interacts-with-startups/",
+    "additionalSourceLabel": "Read the official interaction report"
   },
   {
     "id": "nadella",
@@ -39,7 +45,10 @@
     "dateLabel": "7 December 2020",
     "source": "https://blog.google/innovation-and-ai/technology/next-billion-users/more-inclusive-global-digital-economy/",
     "publisher": "Google",
-    "sourceType": "Adapted remarks"
+    "sourceType": "Adapted remarks",
+    "videoId": "5Py8q5KILhg",
+    "videoLabel": "Full speech",
+    "videoSource": "https://blog.google/innovation-and-ai/technology/next-billion-users/more-inclusive-global-digital-economy/"
   },
   {
     "id": "yunus",
@@ -53,7 +62,12 @@
     "dateLabel": "17 April 2013",
     "source": "https://www.georgetown.edu/news/nobel-peace-prize-winner-muhammad-yunus/",
     "publisher": "Georgetown University",
-    "sourceType": "Host university’s lecture report"
+    "sourceType": "Host university’s lecture report",
+    "videoId": "w9QAE9eFDa0",
+    "videoLabel": "Full lecture",
+    "videoSource": "https://www.youtube.com/watch?v=w9QAE9eFDa0",
+    "videoPublisher": "Georgetown University",
+    "videoPublished": "2013-04-30"
   },
   {
     "id": "ma",
@@ -69,5 +83,73 @@
     "publisher": "World Trade Organization",
     "sourceType": "Official launch report",
     "dateVerification": "https://www.weforum.org/media/trade-press-release/"
+  },
+  {
+    "id": "banga-2026",
+    "name": "Ajay Banga",
+    "role": "President, World Bank Group",
+    "theme": "Digital data & small-business growth",
+    "text": "Banga described how digital payments, business data and digital solutions can help MSMEs become visible to lenders, connect to markets and overcome barriers to finance and growth.",
+    "event": "MSMEs: Leveraging Data for Jobs · World Bank Group Annual Meetings, Bangkok",
+    "date": "2026-10-13",
+    "dateLabel": "13 October 2026",
+    "source": "https://www.worldbank.org/en/news/speech/2026/10/13/remarks-by-wbg-president-ajay-banga-at-msmes-leveraging-data-for-jobs",
+    "publisher": "World Bank Group",
+    "sourceType": "Official speech transcript",
+    "connection": "Relevant to small-business empowerment: accessible digital records and tools can support everyday operations, market access and opportunities to grow.",
+    "kind": "summary",
+    "collection": "recent",
+    "datePrefix": "Statement delivered"
+  },
+  {
+    "id": "teo-2026",
+    "name": "Josephine Teo",
+    "role": "Minister for Digital Development and Information, Singapore",
+    "theme": "Practical technology & productivity",
+    "text": "Teo emphasized that SME success with AI depends on tools that fit real business needs, accessible data, capable people and support to integrate technology into everyday workflows. Adoption alone is not the goal; tangible business impact matters.",
+    "event": "Keynote address · SMEs Go Digital Day 2026",
+    "date": "2026-10-13",
+    "dateLabel": "13 October 2026",
+    "source": "https://www.mddi.gov.sg/newsroom/keynote-address-by-minister-josephine-teo-at-smes-go-digital-day-2026/",
+    "publisher": "Ministry of Digital Development and Information, Singapore",
+    "sourceType": "Official keynote transcript",
+    "connection": "Relevant to productivity: practical tools should fit small-business workflows and resources, helping owners serve customers and compete more effectively.",
+    "kind": "summary",
+    "collection": "recent",
+    "datePrefix": "Statement delivered"
+  },
+  {
+    "id": "pichai-2026",
+    "name": "Sundar Pichai",
+    "role": "CEO, Google and Alphabet",
+    "theme": "Digital access & business opportunity",
+    "text": "Pichai urged investment in connectivity, computing infrastructure and training so that the digital divide does not deepen into an AI divide. He called on companies of every size to use AI to innovate and empower workers.",
+    "event": "Opening ceremony · AI Impact Summit, New Delhi, India",
+    "date": "2026-02-19",
+    "dateLabel": "19 February 2026",
+    "source": "https://blog.google/intl/en-in/company-news/no-technology-has-me-dreaming-bigger-than-ai/",
+    "publisher": "Google",
+    "sourceType": "Official transcript · As prepared for delivery",
+    "connection": "Relevant to digital access: infrastructure, skills and language inclusion can broaden the opportunity for smaller businesses to benefit from technology.",
+    "kind": "summary",
+    "collection": "recent",
+    "datePrefix": "Statement delivered"
+  },
+  {
+    "id": "bogdan-martin-2025",
+    "name": "Doreen Bogdan-Martin",
+    "role": "Secretary-General, International Telecommunication Union (ITU)",
+    "theme": "Meaningful connectivity & global participation",
+    "text": "Bogdan-Martin connected inclusive economic growth with meaningful access to digital tools for learning, doing business and participating safely in the global economy. She warned that unequal connectivity and computing capacity risk widening the AI divide.",
+    "event": "G20 Leaders’ Summit · Sessions One and Three, Johannesburg Expo Centre, South Africa",
+    "date": "2025-11-22",
+    "dateLabel": "22 November 2025",
+    "source": "https://www.itu.int/en/osg/Pages/Speeches.aspx?ItemID=77",
+    "publisher": "International Telecommunication Union",
+    "sourceType": "Official statements · As prepared for delivery",
+    "connection": "Relevant to global commerce: meaningful connectivity helps businesses participate in the digital economy, wherever they operate.",
+    "kind": "summary",
+    "collection": "recent",
+    "datePrefix": "Statement delivered"
   }
 ]
