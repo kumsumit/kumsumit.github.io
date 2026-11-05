@@ -1,0 +1,73 @@
+[
+  {
+    "id": "modi",
+    "name": "Narendra Modi",
+    "role": "Prime Minister of India",
+    "theme": "Small-business empowerment",
+    "kind": "quote",
+    "text": "Start-ups have a huge opportunity for collaboration with small local businesses. Start-ups can empower and make these local businesses efficient.",
+    "event": "Interaction with Startups",
+    "date": "2022-01-15",
+    "dateLabel": "15 January 2022",
+    "source": "https://www.pmindia.gov.in/en/news_updates/pms-address-at-interacts-with-startups-from-various-sectors/",
+    "publisher": "Prime Minister’s Office, India",
+    "sourceType": "Official speech transcript"
+  },
+  {
+    "id": "nadella",
+    "name": "Satya Nadella",
+    "role": "Chairman and CEO, Microsoft",
+    "theme": "Technology & productivity",
+    "kind": "summary",
+    "text": "Nadella described digital infrastructure, connectivity and AI as an opportunity to improve productivity, including for small businesses, while extending technological benefits across countries.",
+    "event": "G7 Summit · Fasano, Italy",
+    "date": "2024-06-13",
+    "dateLabel": "13 June 2024",
+    "source": "https://blogs.microsoft.com/blog/2024/06/13/satya-nadella-remarks-at-the-2024-g7-summit/",
+    "publisher": "Microsoft",
+    "sourceType": "Official remarks"
+  },
+  {
+    "id": "pichai",
+    "name": "Sundar Pichai",
+    "role": "CEO, Google and Alphabet",
+    "theme": "An inclusive digital economy",
+    "kind": "summary",
+    "text": "Pichai called for broader connectivity, financial inclusion and digital skills, highlighting the importance of giving small businesses access to digital tools and opportunities to grow across borders.",
+    "event": "Singapore FinTech Festival",
+    "date": "2020-12-07",
+    "dateLabel": "7 December 2020",
+    "source": "https://blog.google/innovation-and-ai/technology/next-billion-users/more-inclusive-global-digital-economy/",
+    "publisher": "Google",
+    "sourceType": "Adapted remarks"
+  },
+  {
+    "id": "yunus",
+    "name": "Muhammad Yunus",
+    "role": "Founder, Grameen Bank · 2006 Nobel Peace Prize laureate",
+    "theme": "Social business & opportunity",
+    "kind": "summary",
+    "text": "In a lecture on social business and microcredit, Yunus discussed empowering women and reducing poverty, describing how encouragement and access to small loans can help people take their first steps in business.",
+    "event": "Social Business and Microcredit for Women’s Empowerment and Poverty Alleviation · Georgetown University",
+    "date": "2013-04-17",
+    "dateLabel": "17 April 2013",
+    "source": "https://www.georgetown.edu/news/nobel-peace-prize-winner-muhammad-yunus/",
+    "publisher": "Georgetown University",
+    "sourceType": "Host university’s lecture report"
+  },
+  {
+    "id": "ma",
+    "name": "Jack Ma",
+    "role": "Executive Chairman, Alibaba Group",
+    "theme": "Small businesses & global commerce",
+    "kind": "summary",
+    "text": "At the launch of the Enabling E-commerce initiative, Ma advocated a more inclusive global marketplace in which small businesses, young people and developing countries can participate and succeed.",
+    "event": "Enabling E-commerce initiative launch · Buenos Aires",
+    "date": "2017-12-11",
+    "dateLabel": "11 December 2017",
+    "source": "https://www.wto.org/english/news_e/news17_e/ecom_11dec17_e.htm",
+    "publisher": "World Trade Organization",
+    "sourceType": "Official launch report",
+    "dateVerification": "https://www.weforum.org/media/trade-press-release/"
+  }
+]
