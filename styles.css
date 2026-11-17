@@ -64,7 +64,7 @@ h2 { font-size: clamp(2.1rem, 4.2vw, 3.75rem); letter-spacing: -.04em; line-heig
 h3 { font-size: 1.5rem; letter-spacing: -.02em; line-height: 1.2 }
 h4 { font-size: 1.1rem; letter-spacing: -.01em }
 p { color: var(--muted); text-wrap: pretty }
-h1 span, h2 span, .section-intro h2 span {
+:is(h1, h2) span:not(.w, .w > span) {
   font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.015em; color: var(--brand-ink);
 }
 .shell { width: min(1280px, calc(100% - 2 * var(--gutter))); margin-inline: auto }
@@ -141,7 +141,7 @@ header.scrolled { border-bottom-color: var(--line); background: rgba(251, 250, 2
 .hero { padding: clamp(48px, 7vw, 96px) 0 0; position: relative; overflow: hidden }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: clamp(40px, 6vw, 96px); align-items: center; position: relative }
 .hero-copy h1 { margin-bottom: 1.75rem }
-.hero-copy h1 span { display: inline-block; padding-right: .06em }
+.hero-copy h1 span:not(.w, .w > span) { display: inline-block; padding-right: .06em }
 .hero .lede { max-width: 540px }
 .actions { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; margin: 2.25rem 0 0 }
 .hero-meta { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); max-width: 600px }
@@ -620,7 +620,7 @@ header.scrolled { border-bottom-color: var(--line); background: rgba(251, 250, 2
 .philosophy { background: var(--night); color: var(--night-text); overflow: hidden }
 .philosophy .shell { position: relative }
 .philosophy h2 { color: #fff }
-.philosophy h2 span, .philosophy .section-intro h2 span { color: #c9a9ff }
+.philosophy h2 span:not(.w, .w > span) { color: #c9a9ff }
 .philosophy .section-label { color: var(--night-text); border-top-color: rgba(239, 234, 247, .5) }
 .philosophy .eyebrow-num { color: var(--night-muted) }
 .philosophy .lede { color: var(--night-muted) }
@@ -780,9 +780,39 @@ textarea { resize: vertical; min-height: 140px }
 .hero-copy > :nth-child(3) { animation-delay: .12s }
 .hero-copy > :nth-child(4) { animation-delay: .18s }
 .hero-copy > :nth-child(5) { animation-delay: .24s }
-.hero-art { animation: enter 1s .15s var(--ease) both }
-.reveal { transition: opacity .8s var(--ease), transform .8s var(--ease) }
-.reveal.pending { opacity: 0; transform: translateY(24px) }
+.hero-art { animation: enter 1s .15s var(--ease) backwards; transition: transform .6s var(--ease) }
+/* ---------- Site-wide motion (classes added by script.js; html.motion only) ---------- */
+.scroll-progress { position: fixed; inset: 0 0 auto 0; z-index: 70; height: 2px; background: var(--brand-ink); transform: scaleX(0); transform-origin: left; pointer-events: none }
+header { transition: transform .45s var(--ease), border-color .3s, background .3s }
+header.is-tucked { transform: translateY(-100%) }
+.motion .rv { transition: opacity .9s var(--ease), transform .9s var(--ease), color .6s var(--ease); transition-delay: var(--d, 0s) }
+.motion .rv-up:not(.in) { opacity: 0; transform: translateY(28px) }
+.motion .rv-stagger:not(.in) { opacity: 0; transform: translateY(36px) scale(.98) }
+.motion .rv-left:not(.in) { opacity: 0; transform: translateX(-48px) rotate(-1.5deg) }
+.motion .rv-right:not(.in) { opacity: 0; transform: translateX(48px) rotate(2deg) }
+.motion .rv-pop:not(.in) { opacity: 0; transform: scale(.82) }
+.motion .rv-globe { transition-duration: 1.4s }
+.motion .rv-globe:not(.in) { opacity: 0; transform: scale(.84) rotate(-12deg) }
+/* Section labels: the rule draws, then the words appear */
+.motion .rv-rule { position: relative; border-top-color: transparent !important }
+.motion .rv-rule::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--rule, var(--ink)); transform: scaleX(0); transform-origin: left; transition: transform 1.1s var(--ease) }
+.motion .center-intro .rv-rule::before, .motion .future .rv-rule::before { transform-origin: center }
+.motion .rv-rule.in::before { transform: scaleX(1) }
+.motion .rv-rule:not(.in), .motion .rv-rule:not(.in) .eyebrow-num { color: transparent }
+.motion .rv-rule.in { transition-delay: .35s }
+.philosophy .section-label { --rule: rgba(239, 234, 247, .5) }
+/* Headings rise word by word from behind a mask */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .08em .1em 0; margin: 0 -.08em -.1em 0 }
+.w > span { display: inline-block }
+.motion .rv-words .w > span { transform: translateY(108%); transition: transform 1s var(--ease); transition-delay: calc(var(--i) * 45ms + .05s) }
+.motion .rv-words.in .w > span { transform: none }
+/* Footer wordmark rises letter by letter */
+.rv-letters span { display: inline-block }
+.motion .rv-letters span { transform: translateY(70%); opacity: 0; transition: transform 1.2s var(--ease), opacity 1.2s var(--ease); transition-delay: calc(var(--i) * 70ms) }
+.motion .rv-letters.in span { transform: none; opacity: 1 }
+/* Philosophy icons spin into place */
+.motion .principle .geo { opacity: 0; scale: .4; rotate: -45deg; transition: opacity .9s var(--ease), scale .9s var(--ease), rotate .9s var(--ease); transition-delay: calc(var(--d, 0s) + .25s) }
+.motion .principle.in .geo { opacity: 1; scale: var(--geo-scale, 1); rotate: 0deg }
 @keyframes enter { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
 [hidden] { display: none !important }
 
@@ -868,7 +898,7 @@ textarea { resize: vertical; min-height: 140px }
   .principle-art { grid-row: 1 / 4; align-self: start; height: 64px; margin: 0 }
   .principle .number, .principle h3, .principle p { grid-column: 2 }
   .principle h3 { margin-top: 6px }
-  .geo { scale: .8 }
+  .geo { scale: .8; --geo-scale: .8 }
   .form-row { grid-template-columns: 1fr; gap: 0 }
   .brochure-panel { flex-direction: column; padding: 22px; gap: 16px }
   .brochure-actions { align-items: flex-start; flex-direction: column; gap: 16px }
@@ -882,5 +912,4 @@ textarea { resize: vertical; min-height: 140px }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto }
   *, *::before, *::after { animation: none !important; transition: none !important }
-  .reveal.pending { opacity: 1; transform: none }
 }
