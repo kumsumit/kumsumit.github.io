@@ -72,3 +72,13 @@ if (location.protocol === 'file:') {
     if (fallback) fallback.hidden = false;
   });
 }
+
+// The hero orbit system uses SVG animation, which CSS reduced-motion rules don't reach.
+// Hold the planets still (at their staggered positions) for visitors who prefer less motion.
+const orbitSystem = document.querySelector('svg.system');
+if (orbitSystem) {
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const syncMotion = () => (reduceMotion.matches ? orbitSystem.pauseAnimations() : orbitSystem.unpauseAnimations());
+  syncMotion();
+  reduceMotion.addEventListener('change', syncMotion);
+}
