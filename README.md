@@ -6,7 +6,7 @@ Local preview: `python3 -m http.server 8000`, then open http://localhost:8000.
 
 ## Brand and content
 
-The only specified font is Aref Ruqaa Ink, loaded from Google Fonts. All corporate logos, the favicon, and social metadata use the supplied, unmodified `kumpali.png`. Product previews are explicitly illustrative. Stromule and Pangeabuy use text names because their official logo assets were not supplied. Storax uses the existing `storax.png` asset.
+Typography is loaded from Google Fonts: Geist for text, Geist Mono for labels and metadata, and Instrument Serif (italic) for emphasis. Aref Ruqaa Ink is reserved for the Kumpali wordmark in the header and footer. All corporate logos, the favicon, and social metadata use the supplied, unmodified `kumpali.png`. Product previews are explicitly illustrative. Stromule and Pangeabuy use text names because their official logo assets were not supplied. Storax uses the existing `storax.png` asset.
 
 The portfolio groups business and local commerce (Stromule and Pangeabuy) separately from files and everyday tools (currently Storax). The commerce integration diagram refers only to Stromule and Pangeabuy. Additional applications can be added after their names and public descriptions are confirmed.
 
