@@ -24,12 +24,6 @@ links.addEventListener('focusout', event => { if (!links.contains(event.relatedT
 matchMedia('(min-width: 801px)').addEventListener('change', () => closeMenu());
 const header = document.querySelector('header');
 addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 12), { passive: true });
-if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.remove('pending'); observer.unobserve(entry.target); }
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.reveal').forEach(element => { element.classList.add('pending'); observer.observe(element); });
-}
 function openLinkedDetails() {
   const id = location.hash.slice(1);
   const target = document.getElementById(id);
@@ -189,3 +183,151 @@ if (spotlightCards.length > 1) {
   recentPerspectives.querySelector('.perspective-subsection-intro').after(stage);
   select(0);
 }
+
+// ---------------------------------------------------------------------------
+// Site-wide motion. Runs last so it sees the poster row and spotlight built above.
+// Nothing is hidden unless this script runs, and nothing moves for reduced-motion users.
+(() => {
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const siteHeader = document.querySelector('header');
+
+  // Scroll progress line and auto-hiding header (header returns as soon as you scroll up).
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.prepend(progress);
+  let lastY = scrollY, ticking = false;
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    if (!reduceMotion) {
+      const menuOpen = document.querySelector('.nav-links.open');
+      if (scrollY > 320 && scrollY > lastY + 4 && !menuOpen && !siteHeader.contains(document.activeElement)) siteHeader.classList.add('is-tucked');
+      else if (scrollY < lastY - 4 || scrollY <= 320) siteHeader.classList.remove('is-tucked');
+    }
+    lastY = scrollY;
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('is-tucked'));
+  onScroll();
+
+  if (reduceMotion) return;
+  document.documentElement.classList.add('motion');
+
+  // Split headings into masked words (keeps inline spans and line breaks intact).
+  const splitWords = heading => {
+    let index = 0;
+    const walk = node => {
+      [...node.childNodes].forEach(child => {
+        if (child.nodeType === 3) {
+          const parts = child.textContent.split(/(\s+)/);
+          const fragment = document.createDocumentFragment();
+          parts.forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { fragment.append(part); return; }
+            const outer = document.createElement('span');
+            outer.className = 'w';
+            const inner = document.createElement('span');
+            inner.textContent = part;
+            inner.style.setProperty('--i', index++);
+            outer.append(inner);
+            fragment.append(outer);
+          });
+          child.replaceWith(fragment);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          walk(child);
+        }
+      });
+    };
+    walk(heading);
+    heading.classList.add('rv-words');
+  };
+  document.querySelectorAll('main h1, main h2').forEach(splitWords);
+
+  // Footer wordmark rises letter by letter.
+  const wordmark = document.querySelector('.footer-wordmark');
+  if (wordmark) {
+    const letters = [...wordmark.textContent];
+    wordmark.textContent = '';
+    letters.forEach((letter, i) => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.style.setProperty('--i', i);
+      wordmark.append(span);
+    });
+    wordmark.classList.add('rv-letters');
+  }
+
+  // Assign reveal variants. Groups cascade by their order among matching siblings.
+  const variants = [
+    ['.section-label', 'rv-rule'],
+    ['.hero-kicker, .lede, .large-copy, .editorial > p:not(.eyebrow):not(.large-copy), .editorial > blockquote, .clarity-art, .shared-vision-finale > p, .future-line, .contact-note, .integration-note, .perspective-note, .perspective-subsection-intro > p, .eco-illustrative', 'rv-up'],
+    ['.shared-vision-direction, .recent-perspectives, .ecosystem-diagram, #contact > .split, .company-credentials, .brochure-panel, .about-identity, .poster-bar', 'rv-up'],
+    ['.vision-globe', 'rv-globe'],
+    ['.eco-window', 'rv-left'],
+    ['.eco-phone', 'rv-right'],
+    ['.parent-node, .integration-track b, .about-identity img', 'rv-pop'],
+    ['.shared-vision-products > div, .poster, .principle, .process li, .historical-perspectives .perspective-card, .context-tags span, .footer-main > *, .eco-side figcaption, .eco-outcome', 'rv-stagger'],
+  ];
+  const targets = new Set();
+  variants.forEach(([selector, variant]) => {
+    document.querySelectorAll(selector).forEach(element => {
+      if (targets.has(element)) return;
+      element.classList.add('rv', variant);
+      if (variant === 'rv-stagger') {
+        const siblings = [...element.parentElement.children].filter(sibling => sibling.matches(selector));
+        element.style.setProperty('--d', `${Math.min(siblings.indexOf(element), 6) * 90}ms`);
+      }
+      targets.add(element);
+    });
+  });
+  document.querySelectorAll('.rv-words, .rv-letters').forEach(element => targets.add(element));
+
+  // Count numbers up when they appear.
+  const countUp = element => {
+    const target = parseInt(element.textContent.replace(/\D/g, ''), 10);
+    if (!target) return;
+    const start = performance.now(), duration = 1200;
+    const frame = now => {
+      const t = Math.min(1, (now - start) / duration);
+      element.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(frame);
+    };
+    element.textContent = '0';
+    requestAnimationFrame(frame);
+  };
+
+  // Reveal anything that has reached the lower part of the viewport, or has already been scrolled past,
+  // so fast scrolling or jumping to a section never leaves content hidden.
+  const pending = new Set(targets);
+  const reveal = element => {
+    element.classList.add('in');
+    element.querySelectorAll('.fan-num').forEach(countUp);
+    pending.delete(element);
+  };
+  const atBottom = () => innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+  const check = () => {
+    const line = innerHeight * 0.9, bottom = atBottom();
+    pending.forEach(element => { if (bottom || element.getBoundingClientRect().top < line) reveal(element); });
+    checking = false;
+  };
+  let checking = false;
+  const queueCheck = () => { if (!checking && pending.size) { checking = true; requestAnimationFrame(check); } };
+  addEventListener('scroll', queueCheck, { passive: true });
+  addEventListener('resize', queueCheck);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+  check();
+
+  // Hero panel leans gently towards the pointer.
+  const heroArt = document.querySelector('.hero-art');
+  if (heroArt && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    heroArt.addEventListener('pointermove', event => {
+      const box = heroArt.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width - .5;
+      const y = (event.clientY - box.top) / box.height - .5;
+      heroArt.style.transform = `perspective(1000px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
+    });
+    heroArt.addEventListener('pointerleave', () => { heroArt.style.transform = ''; });
+  }
+})();
