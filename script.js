@@ -82,3 +82,110 @@ if (orbitSystem) {
   syncMotion();
   reduceMotion.addEventListener('change', syncMotion);
 }
+
+// Product poster row: previous/next buttons step one poster at a time and disable at either end.
+const posterTrack = document.querySelector('.poster-track');
+if (posterTrack) {
+  const bar = document.querySelector('.poster-bar');
+  const prev = bar.querySelector('.poster-prev');
+  const next = bar.querySelector('.poster-next');
+  const step = () => {
+    const first = posterTrack.querySelector('.poster');
+    return first ? first.getBoundingClientRect().width + parseFloat(getComputedStyle(posterTrack).columnGap || 16) : posterTrack.clientWidth;
+  };
+  const sync = () => {
+    const max = posterTrack.scrollWidth - posterTrack.clientWidth;
+    bar.classList.toggle('no-scroll', max <= 2);
+    prev.disabled = posterTrack.scrollLeft <= 2;
+    next.disabled = posterTrack.scrollLeft >= max - 2;
+  };
+  const go = dir => { posterTrack.scrollBy({ left: dir * step() }); setTimeout(sync, 450); };
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  posterTrack.addEventListener('scroll', sync, { passive: true });
+  posterTrack.addEventListener('scrollend', sync);
+  if ('ResizeObserver' in window) new ResizeObserver(sync).observe(posterTrack);
+  else addEventListener('resize', sync);
+  sync();
+}
+
+// Recent perspectives: turn the generated card grid into a spotlight (one statement at a time) with a speaker rail.
+// Without JavaScript the generated cards remain a readable grid.
+const recentPerspectives = document.querySelector('.recent-perspectives');
+const spotlightCards = recentPerspectives ? [...recentPerspectives.querySelectorAll('.perspective-card')] : [];
+if (spotlightCards.length > 1) {
+  recentPerspectives.classList.add('is-spotlight');
+  const stage = document.createElement('div');
+  stage.className = 'spotlight';
+  const rail = document.createElement('div');
+  rail.className = 'spotlight-rail';
+  rail.setAttribute('role', 'tablist');
+  rail.setAttribute('aria-label', 'Choose a perspective');
+  const panels = document.createElement('div');
+  panels.className = 'spotlight-panels';
+  const initialsOf = name => name.split(/\s+/).map(word => word.replace(/[^A-Za-z]/g, '')[0]).filter(Boolean).slice(0, 2).join('').toUpperCase();
+  const tabs = spotlightCards.map((card, index) => {
+    const heading = card.querySelector('h3');
+    const name = heading.textContent.trim();
+    const initials = initialsOf(name);
+    const time = card.querySelector('footer time');
+    // Speaker line: monogram + name + role, placed after the statement.
+    const speaker = document.createElement('div');
+    speaker.className = 'perspective-speaker';
+    const mono = document.createElement('span');
+    mono.className = 'perspective-mono';
+    mono.setAttribute('aria-hidden', 'true');
+    mono.textContent = initials;
+    const who = document.createElement('div');
+    who.append(heading, card.querySelector('.perspective-role'));
+    speaker.append(mono, who);
+    (card.querySelector('.perspective-summary') || card.querySelector('blockquote')).after(speaker);
+    card.id = card.id || `perspective-spot-${index}`;
+    card.setAttribute('role', 'tabpanel');
+    card.tabIndex = 0;
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'spotlight-tab';
+    tab.id = `${card.id}-tab`;
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-controls', card.id);
+    const tabMono = mono.cloneNode(true);
+    const text = document.createElement('span');
+    text.className = 'spotlight-tab-text';
+    const tabName = document.createElement('b');
+    tabName.textContent = name;
+    const tabDate = document.createElement('span');
+    tabDate.textContent = time ? time.textContent : '';
+    text.append(tabName, tabDate);
+    tab.append(tabMono, text);
+    rail.append(tab);
+    panels.append(card);
+    return tab;
+  });
+  const select = (index, focus = false) => {
+    tabs.forEach((tab, i) => {
+      const on = i === index;
+      tab.setAttribute('aria-selected', String(on));
+      tab.tabIndex = on ? 0 : -1;
+      spotlightCards[i].hidden = !on;
+    });
+    if (focus) tabs[index].focus();
+  };
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => select(index)));
+  rail.addEventListener('keydown', event => {
+    const current = tabs.indexOf(document.activeElement);
+    if (current < 0) return;
+    const moves = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+    let next = null;
+    if (event.key in moves) next = (current + moves[event.key] + tabs.length) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next === null) return;
+    event.preventDefault();
+    select(next, true);
+  });
+  stage.append(panels, rail);
+  recentPerspectives.querySelectorAll('.perspective-year-group').forEach(group => group.remove());
+  recentPerspectives.querySelector('.perspective-subsection-intro').after(stage);
+  select(0);
+}
