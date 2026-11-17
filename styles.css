@@ -367,20 +367,20 @@ header.scrolled { border-bottom-color: var(--line); background: rgba(251, 250, 2
 .product-group-heading h3 { margin: 0; font-size: 1.15rem; letter-spacing: -.01em }
 .product-group-heading p { margin: 0; font-size: .92rem }
 
-.stromule { --accent: #1f6b47; --accent-2: #2f9a68; --tint: #eef6f0; --wash: #d4eadb }
-.pangeabuy { --accent: #126a6d; --accent-2: #1c9a9c; --tint: #ecf6f5; --wash: #cfe9e7 }
+.stromule { --accent: #1f6b47; --accent-2: #2f9a68; --tint: #eef6f0; --wash: #d4eadb; --deep: #175a3b; --pop: #9be3bb }
+.pangeabuy { --accent: #126a6d; --accent-2: #1c9a9c; --tint: #ecf6f5; --wash: #cfe9e7; --deep: #0e5a5d; --pop: #93e6e0 }
 
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
 .product-card { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; scroll-margin-top: 110px; transition: box-shadow .35s var(--ease), border-color .35s }
 .product-card:hover { border-color: var(--line-strong); box-shadow: 0 30px 60px -40px rgba(23, 18, 31, .35) }
-.product-copy { padding: clamp(28px, 3vw, 40px); flex: 1 }
+.product-copy { padding: clamp(28px, 3vw, 40px) }
 .product-copy .eyebrow { color: var(--accent); margin-bottom: 1.5rem }
 .product-copy h3 { font-size: clamp(2.4rem, 3.6vw, 3.25rem); letter-spacing: -.045em; line-height: 1; margin-bottom: .65rem; font-weight: 500 }
 .tagline { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 1.4rem; line-height: 1.25; margin-bottom: 1.25rem }
 .product-copy > p:not(.eyebrow):not(.tagline) { font-size: .98rem; color: var(--ink-2); max-width: 520px }
 .product-copy .text-link { margin-top: .5rem }
-.product-visual { margin: 0 12px; padding: 28px 24px 14px; border-radius: var(--r) var(--r) 0 0; background: var(--tint) }
-.mockup { background: var(--surface); border: 1px solid var(--wash); border-radius: 12px; overflow: hidden; min-height: 248px; box-shadow: 0 24px 48px -28px color-mix(in srgb, var(--accent) 45%, transparent), 0 2px 4px rgba(23, 18, 31, .04) }
+.product-visual { flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 0 12px; padding: 28px 24px 14px; border-radius: var(--r) var(--r) 0 0; background: var(--deep) }
+.mockup { background: var(--surface); border-radius: 12px; overflow: hidden; box-shadow: 0 28px 50px -28px rgba(0, 0, 0, .65) }
 .mockup-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--wash); font-size: .9rem; color: var(--accent) }
 .mockup-header strong { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.01em }
 .mockup-header strong::before { content: ''; width: 34px; height: 8px; background: radial-gradient(circle, #e4e0e9 3px, transparent 3.5px) 0 0 / 12px 8px repeat-x }
@@ -391,23 +391,45 @@ header.scrolled { border-bottom-color: var(--line); background: rgba(251, 250, 2
 .sidebar b { background: var(--surface); color: var(--accent); font-weight: 600; box-shadow: 0 1px 2px rgba(23, 18, 31, .06) }
 .workspace-main { padding: 20px 18px }
 .workspace-main h4, .discovery-content h4 { font-size: 1rem; font-weight: 600; letter-spacing: -.02em; margin-bottom: 14px }
-.record { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid #f0eef3; font-size: .76rem; color: var(--ink-2) }
-.record:last-child { border-bottom: 0 }
-.record i { height: 6px; width: 42px; border-radius: 3px; background: linear-gradient(90deg, var(--accent-2) 65%, var(--wash) 65%) }
-.record:nth-child(3) i { background: linear-gradient(90deg, var(--accent-2) 40%, var(--wash) 40%) }
-.record:nth-child(4) i { background: linear-gradient(90deg, var(--accent-2) 85%, var(--wash) 85%) }
 .sample-label { font-size: 0.8rem; text-align: center; margin: 14px 0 0; color: color-mix(in srgb, var(--accent) 60%, var(--muted)) }
+.product-visual .sample-label { color: rgba(255, 255, 255, .72) }
 .discovery-content { padding: 20px 16px }
 .search-demo { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border: 1px solid var(--wash); border-radius: 999px; font-size: .72rem; color: var(--muted); background: color-mix(in srgb, var(--tint) 50%, white) }
 .search-demo span { color: var(--accent) }
-.discovery-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px }
-.discovery-tiles > div { display: flex; flex-direction: column; gap: 7px; font-size: .66rem; color: var(--ink-2) }
-.tile-shape { height: 64px; border-radius: 10px; display: grid; place-items: center; background: #e5f1ea }
-.tile-shape::after { content: ''; display: block; width: 24px; height: 26px; background: #9ccbb2; border-radius: 50% 50% 38% 38% }
-.tile-shape.home { background: #f4eee3 }
-.tile-shape.home::after { background: #d7c5a4; border-radius: 4px 4px 11px 11px }
-.tile-shape.shops { background: #e1eef0 }
-.tile-shape.shops::after { background: #93bcc3; border-radius: 3px; box-shadow: 0 -6px 0 #6b9ba3 }
+/* Stromule workspace content */
+.workspace-main h4 { margin-bottom: 12px }
+.ws-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px }
+.ws-stats > div { padding: 9px 10px; border-radius: 9px; background: var(--tint); border: 1px solid var(--wash) }
+.ws-stats span { display: block; font-size: .66rem; color: var(--muted) }
+.ws-stats b { display: block; margin-top: 2px; font-size: 1.05rem; font-weight: 600; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums }
+.ws-stats .warn { background: #fdf3e2; border-color: #f4dfb8 }
+.ws-stats .warn b { color: #9a5b06 }
+.ws-tasks { margin-top: 12px }
+.ws-tasks p { margin: 0 0 4px; font-size: .66rem; font-weight: 500; color: var(--muted) }
+.task { display: flex; align-items: center; gap: 9px; padding: 7px 0; border-top: 1px solid #f0eef3; font-size: .74rem; color: var(--ink) }
+.task:first-of-type { border-top: 0 }
+.task i { flex: none; width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid #cfc9d8 }
+.task.done i { border-color: var(--accent-2); background: var(--accent-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 8.4 2.6 2.6L12 5.6'/%3E%3C/svg%3E") center / 10px no-repeat }
+.task.done span { color: var(--muted); text-decoration: line-through; text-decoration-color: #cfc9d8 }
+.task span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis }
+.task em { margin-left: auto; padding: 1px 7px; border-radius: 999px; background: #fdf3e2; color: #9a5b06; font-size: .62rem; font-style: normal; font-weight: 500 }
+
+/* Pangeabuy discovery content */
+.disc-chips { display: flex; gap: 6px; margin-top: 12px; overflow: hidden }
+.disc-chips span { flex: none; padding: 4px 10px; border-radius: 999px; border: 1px solid #e6e3eb; font-size: .66rem; color: var(--ink-2) }
+.disc-chips span.on { background: var(--deep); border-color: var(--deep); color: #fff }
+.disc-list { margin-top: 8px }
+.merchant { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid #f0eef3 }
+.merchant:first-child { border-top: 0 }
+.merchant i { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; font-size: .72rem; font-style: normal; font-weight: 600; color: #fff }
+.merchant.m1 i { background: #d39b2a }
+.merchant.m2 i { background: #4f7fb8 }
+.merchant.m3 i { background: #b8634a }
+.merchant > div { min-width: 0 }
+.merchant b { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .76rem; font-weight: 600; color: var(--ink) }
+.merchant span { display: block; font-size: .66rem; color: var(--muted) }
+.merchant em { margin-left: auto; flex: none; padding: 2px 8px; border-radius: 999px; background: #e0f5f3; color: var(--deep); font-size: .62rem; font-style: normal; font-weight: 500 }
+.merchant em.later { background: #f2f1f5; color: var(--muted) }
 .product-card details { padding: 18px clamp(28px, 3vw, 40px); border-top: 1px solid var(--line); font-size: .92rem; scroll-margin-top: 120px; background: var(--surface) }
 .product-card details p { margin: 12px 0 4px; font-size: .92rem }
 .product-card details a { color: var(--accent); text-underline-offset: 3px }
@@ -766,8 +788,8 @@ textarea { resize: vertical; min-height: 140px }
   .sidebar { font-size: .64rem; padding: 12px 6px }
   .workspace-main { padding: 16px 12px }
   .discovery-content { padding: 16px 12px }
-  .discovery-tiles { gap: 6px }
-  .discovery-tiles > div { font-size: .6rem }
+  .ws-stats { gap: 6px }
+  .ws-stats > div { padding: 7px 8px }
   .file-concept { padding: 18px }
   .file-folders { gap: 8px }
   .brochure-panel { flex-direction: column; padding: 22px; gap: 16px }
